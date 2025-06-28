@@ -1,0 +1,8 @@
+name: MH
+version: '1.0'
+main: me.shinsu.mH.MH
+api-version: '1.21'
+authors: [ Shinsu ]
+commands:
+  mh:
+    description: Base command

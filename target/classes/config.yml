@@ -1,0 +1,4 @@
+message: "fuu"
+
+#DROP ITEMS SECTIONS
+reWriteDrops: false # true / Discard default items | false / adding new to default

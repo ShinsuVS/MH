@@ -9,9 +9,9 @@ import java.util.List;
 
 
 
-public class GetItems extends SubCommand<Player> {
+public class GetItemsCommand extends SubCommand<Player> {
 
-    public GetItems(MH plugin) {
+    public GetItemsCommand(MH plugin) {
         super(plugin);
     }
 

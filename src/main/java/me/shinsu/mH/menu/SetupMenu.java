@@ -3,6 +3,7 @@ package me.shinsu.mH.menu;
 import me.shinsu.mH.MH;
 import me.shinsu.mH.manhunt.Game;
 import me.shinsu.mH.menu.data.SetupSettings;
+import me.shinsu.mH.utils.inventory.InventoryUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -12,6 +13,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.jetbrains.annotations.Nullable;
 import org.mineacademy.fo.menu.Menu;
+import org.mineacademy.fo.menu.MenuPagged;
 import org.mineacademy.fo.menu.button.Button;
 import org.mineacademy.fo.menu.button.ButtonMenu;
 import org.mineacademy.fo.menu.button.ButtonReturnBack;
@@ -271,6 +273,7 @@ public class SetupMenu extends Menu {
         private final Button timeUp;
         private final Button timeDowm;
         private final Button scoreBoardBtn;
+        private final Button actionItemManagerMenu;
 
         SettingsMenu(){
 
@@ -397,6 +400,19 @@ public class SetupMenu extends Menu {
                             "&4&lНажми на кнопку ->").glow(true).make();
                 }
             };
+            this.actionItemManagerMenu = new Button(53) {
+                @Override
+                public void onClickedInMenu(Player player, Menu menu, ClickType clickType) {
+                    new ActionItemsManagerMenu().displayTo(player);
+                }
+
+                @Override
+                public ItemStack getItem() {
+                    return ItemCreator.of(CompMaterial.ENDER_CHEST,
+                            "Настройки кастомных предметов",
+                            "СКОРО!").glow(true).make();
+                }
+            };
 
 
 
@@ -440,5 +456,33 @@ public class SetupMenu extends Menu {
         protected int getReturnButtonPosition() {
             return 0;
         }
+
+        public List<ItemStack> getItems(){
+            InventoryUtils.getItemsList();
+            return  InventoryUtils.getItemsList();
+        }
+
+        private class ActionItemsManagerMenu extends MenuPagged<ItemStack>{
+
+
+            ActionItemsManagerMenu()
+            {
+                super(getItems());
+            }
+
+
+
+            @Override
+            protected ItemStack convertToItemStack(ItemStack itemStack) {
+                return itemStack;
+            }
+
+            @Override
+            protected void onPageClick(Player player, ItemStack itemStack, ClickType clickType) {
+
+            }
+        }
     }
+
+
 }

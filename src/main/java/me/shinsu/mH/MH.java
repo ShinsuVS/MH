@@ -18,6 +18,7 @@ import org.bukkit.NamespacedKey;
 import org.bukkit.event.Listener;
 import org.mineacademy.fo.plugin.SimplePlugin;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -63,10 +64,22 @@ public final class MH extends SimplePlugin {
         ItemGenerator.addItem(MH.customItemMap.get("healingsphere").getItem(1), 1 ,10);
         if(ItemGenerator.isDropFileExists(this)){
 
-        }
-        else {
+            if(ItemGenerator.validateFile(this)){
+                Bukkit.getLogger().info("PIZDA");
+            }
+            else {
+                Bukkit.getLogger().info("XUI");
+            }
 
         }
+        else {
+            try {
+                ItemGenerator.saveToFile(this);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
 
 
 

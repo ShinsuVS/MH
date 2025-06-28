@@ -2,7 +2,8 @@ package me.shinsu.mH.commands;
 
 import me.shinsu.mH.MH;
 import me.shinsu.mH.commands.data.CreateCommand;
-import me.shinsu.mH.commands.data.GetItems;
+import me.shinsu.mH.commands.data.GetCompassCommand;
+import me.shinsu.mH.commands.data.GetItemsCommand;
 import me.shinsu.mH.utils.Colorize;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -22,7 +23,8 @@ public class MhBaseCommand implements CommandExecutor {
     public MhBaseCommand(MH plugin){
         this.plugin = plugin;
         subCommands.add(new CreateCommand(plugin));
-        subCommands.add(new GetItems(plugin));
+        subCommands.add(new GetItemsCommand(plugin));
+        subCommands.add(new GetCompassCommand(plugin));
     }
 
     @Override
